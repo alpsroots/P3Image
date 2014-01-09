@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Teste.Models
 {
-    public class CategoriaModel
+    public class SubCategoriaModel
     {
         public virtual int Id
         {
@@ -12,8 +12,16 @@ namespace Teste.Models
             set;
         }
 
-        [DisplayName("Descrição")]
+        [Required(ErrorMessage="Informe a Categoria.")]
+        [DisplayName("Categoria")]        
+        public virtual CategoriaModel Categoria
+        {
+            get;
+            set;
+        }
+
         [Required(ErrorMessage="Informe a Descrição.")]
+        [DisplayName("Descrição")]
         public virtual string Descricao
         {
             get;

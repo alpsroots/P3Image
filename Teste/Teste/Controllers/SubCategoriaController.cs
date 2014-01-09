@@ -9,29 +9,35 @@ using Teste.Models.NHibernate;
 
 namespace Teste.Controllers
 {
-    public class CategoriaController : Controller
+    public class SubCategoriaController : Controller
     {
         //
-        // GET: /Categoria/
+        // GET: /SubCategoria/
 
         public ActionResult Index()
         {
             using (ISession session = NHibernateSession.OpenSession())
             {
-                IQuery query = session.CreateQuery("from CategoriaModel");
-                var categorias = query.List<CategoriaModel>();
-
-                return View(categorias);
-            }
+                IQuery query = session.CreateQuery("from SubCategoriaModel");
+                var subCategorias = query.List<SubCategoriaModel>();
+                
+                return View(subCategorias);
+            }            
         }
 
         public ActionResult Create()
         {
-            return View();
+            using (ISession session = NHibernateSession.OpenSession())
+            {
+                IQuery query = session.CreateQuery("from CategoriaModel");
+                ViewBag.lstCategoria = query.List<CategoriaModel>();
+
+                return View();
+            }
         }
 
         [HttpPost]
-        public ActionResult Create(CategoriaModel categoria)
+        public ActionResult Create(SubCategoriaModel subCategoria)
         {
             try
             {
@@ -39,7 +45,7 @@ namespace Teste.Controllers
                 {
                     using (ITransaction tran = session.BeginTransaction())
                     {
-                        session.Save(categoria);
+                        session.Save(subCategoria);
                         tran.Commit();
                     }
                 }
@@ -56,14 +62,17 @@ namespace Teste.Controllers
         {
             using (ISession session = NHibernateSession.OpenSession())
             {
-                var categoria = session.Get<CategoriaModel>(id);
+                IQuery query = session.CreateQuery("from CategoriaModel");
+                ViewBag.lstCategoria = query.List<CategoriaModel>();
 
-                return View(categoria);
-            }            
+                var subCategoria = session.Get<SubCategoriaModel>(id);
+
+                return View(subCategoria);
+            }
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, CategoriaModel categoria)
+        public ActionResult Edit(int id, SubCategoriaModel subCategoria)
         {
             try
             {
@@ -71,7 +80,7 @@ namespace Teste.Controllers
                 {
                     using (ITransaction tran = session.BeginTransaction())
                     {
-                        session.Update(categoria);
+                        session.Update(subCategoria);
                         tran.Commit();
                     }
                 }
@@ -88,14 +97,14 @@ namespace Teste.Controllers
         {
             using (ISession session = NHibernateSession.OpenSession())
             {
-                var categoria = session.Get<CategoriaModel>(id);
+                var subCategoria = session.Get<SubCategoriaModel>(id);
 
-                return View(categoria);
+                return View(subCategoria);
             }
         }
 
         [HttpPost]
-        public ActionResult Delete(int id, CategoriaModel categoria)
+        public ActionResult Delete(int id, SubCategoriaModel subCategoria)
         {
             try
             {
@@ -103,7 +112,7 @@ namespace Teste.Controllers
                 {
                     using (ITransaction tran = session.BeginTransaction())
                     {
-                        session.Delete(categoria);
+                        session.Delete(subCategoria);
                         tran.Commit();
                     }
                 }
@@ -115,5 +124,6 @@ namespace Teste.Controllers
                 return View();
             }
         }
+
     }
 }
