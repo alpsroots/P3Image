@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="Teste" namespace="Teste.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="SubCategoriaModel" table="SubCategoria" lazy="true" >
+    <id name="Id" column="id">
+      <generator class="identity" />
+    </id>
+    <property name="Descricao">
+      <column name="descricao" sql-type="varchar" />
+    </property>
+    <many-to-one name="Categoria">
+      <column name="idCategoria" sql-type="int" not-null="true" />
+    </many-to-one>
+    <bag name="Campos" lazy="true" table="Campos" cascade="all" >
+      <key column="IdSubCategoria"/>
+      <one-to-many class="CamposModel"/>
+    </bag>
+  </class>
+</hibernate-mapping>

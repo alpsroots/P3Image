@@ -285,12 +285,10 @@
     <EmbeddedResource Include="Models\NHibernate\Mappings\Categoria.hbm.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Models\NHibernate\Mappings\SubCategoria.hbm.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <Compile Include="Models\ListaCamposModel.cs" />
     <Content Include="Models\NHibernate\Mappings\Campos.hbm.xml" />
     <Content Include="Models\NHibernate\Mappings\ListaCampos.hbm.xml" />
+    <Content Include="Models\NHibernate\Mappings\SubCategoria.hbm.xml" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
