@@ -13,7 +13,6 @@ namespace Teste.Models
         }
 
         [DisplayName("Descrição")]
-        [Required(ErrorMessage="Informe a Descrição.")]
         public virtual string Descricao
         {
             get;

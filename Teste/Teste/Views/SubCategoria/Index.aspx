@@ -13,22 +13,17 @@
         <th>
             <%: Html.DisplayNameFor(model => model.Descricao) %>
         </th>
-        <th>
-            <%: Html.DisplayNameFor(model => model.Categoria) %>
-        </th>
     </tr>
 
 <% foreach (var item in Model) { %>
     <tr>
         <td>
+            <%: Html.ActionLink("Detalhes", "Details", new { id=item.Id }) %> |
             <%: Html.ActionLink("Editar", "Edit", new { id=item.Id }) %> |
             <%: Html.ActionLink("Excluir", "Delete", new { id=item.Id }) %>
         </td>
         <td>
             <%: Html.DisplayFor(modelItem => item.Descricao) %>
-        </td>
-        <td>
-            <%--<%: Html.DisplayFor(modelItem => item.Categoria.Descricao) %>--%>
         </td>
     </tr>
 <% } %>

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Teste.Models
 {
@@ -12,17 +14,20 @@ namespace Teste.Models
             set;
         }
 
-        [Required(ErrorMessage="Informe a Categoria.")]
-        [DisplayName("Categoria")]        
+        [DisplayName("Descrição")]
+        public virtual string Descricao
+        {
+            get;
+            set;
+        }
+
         public virtual CategoriaModel Categoria
         {
             get;
             set;
         }
 
-        [Required(ErrorMessage="Informe a Descrição.")]
-        [DisplayName("Descrição")]
-        public virtual string Descricao
+        public virtual IList<CamposModel> Campos
         {
             get;
             set;

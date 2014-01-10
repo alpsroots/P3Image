@@ -39,6 +39,26 @@ namespace Teste.Controllers
         [HttpPost]
         public ActionResult Create(SubCategoriaModel subCategoria)
         {
+            //Campos
+            subCategoria.Campos = new List<CamposModel>();
+            subCategoria.Campos.Add(new CamposModel()
+            {
+                Ordem = 1,
+                Descricao = "Campo de Checagem",
+                Tipo = "checkbox",
+                ListaCampos = new List<ListaCamposModel>()
+            });
+
+            subCategoria.Campos[0].ListaCampos.Add(new ListaCamposModel()
+            {
+                Descricao = "Option 1"
+            });
+
+            subCategoria.Campos[0].ListaCampos.Add(new ListaCamposModel()
+            {
+                Descricao = "Option 2"
+            });
+
             try
             {
                 using (ISession session = NHibernateSession.OpenSession())

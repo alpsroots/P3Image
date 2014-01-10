@@ -1,0 +1,42 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/MasterPage.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<Teste.Models.CampoModel>>" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+<h2>Index</h2>
+
+<p>
+    <%: Html.ActionLink("Create New", "Create") %>
+</p>
+<table>
+    <tr>
+        <th>
+            <%: Html.DisplayNameFor(model => model.Ordem) %>
+        </th>
+        <th>
+            <%: Html.DisplayNameFor(model => model.Descricao) %>
+        </th>
+        <th></th>
+    </tr>
+
+<% foreach (var item in Model) { %>
+    <tr>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.Ordem) %>
+        </td>
+        <td>
+            <%: Html.DisplayFor(modelItem => item.Descricao) %>
+        </td>
+        <td>
+            <%: Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) %> |
+            <%: Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) %> |
+            <%: Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) %>
+        </td>
+    </tr>
+<% } %>
+
+</table>
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
