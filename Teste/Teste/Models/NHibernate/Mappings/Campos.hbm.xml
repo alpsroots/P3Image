@@ -5,18 +5,18 @@
       <generator class="identity" />
     </id>
     <property name="Ordem">
-      <column name="ordem" sql-type="int" not-null="true" />
+      <column name="ordem" sql-type="int" />
     </property>
     <property name="Descricao">
-      <column name="descricao" sql-type="varchar" not-null="true" />
+      <column name="descricao" sql-type="varchar" />
     </property>
     <property name="Tipo">
-      <column name="tipo" sql-type="varchar" not-null="true" />
+      <column name="tipo" sql-type="varchar" />
     </property>
     <property name="IdSubCategoria">
-      <column name="idSubCategoria" sql-type="int" not-null="true" />
+      <column name="idSubCategoria" sql-type="int" />
     </property>
-    <bag name="ListaCampos" lazy="true" table="ListaCampos" cascade="all" >
+    <bag name="ListaCampos" lazy="false" table="ListaCampos" cascade="save-update" >
       <key column="IdCampo"/>
       <one-to-many class="ListaCamposModel"/>
     </bag>

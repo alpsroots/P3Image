@@ -32,12 +32,7 @@
                     <li><a href="/SubCategoria">Sub-Categorias</a></li>
                 </ul>
             </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Área Pública <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/Formularios">Formulários</a></li>
-                </ul>
-            </li>
+            <li><a href="/Form">Área Pública </a></li>
         </ul>
       </div>
     </nav>

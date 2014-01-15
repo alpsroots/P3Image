@@ -7,11 +7,11 @@
     <property name="Descricao">
       <column name="descricao" sql-type="varchar" />
     </property>
-    <many-to-one name="Categoria">
-      <column name="idCategoria" sql-type="int" not-null="true" />
+    <many-to-one name="Categoria" lazy="false">
+      <column name="idCategoria" sql-type="int" />
     </many-to-one>
-    <bag name="Campos" lazy="true" table="Campos" cascade="all" >
-      <key column="IdSubCategoria"/>
+    <bag name="Campos" lazy="false" table="Campos" cascade="save-update">
+      <key column="IdSubCategoria" />
       <one-to-many class="CamposModel"/>
     </bag>
   </class>

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using NHibernate;
 using Teste.Models;
@@ -25,6 +23,16 @@ namespace Teste.Controllers
             }            
         }
 
+        public ActionResult Details(int id)
+        {
+            using (ISession session = NHibernateSession.OpenSession())
+            {
+                var subCategoria = session.Get<SubCategoriaModel>(id);
+
+                return View(subCategoria);
+            }
+        }
+
         public ActionResult Create()
         {
             using (ISession session = NHibernateSession.OpenSession())
@@ -39,25 +47,43 @@ namespace Teste.Controllers
         [HttpPost]
         public ActionResult Create(SubCategoriaModel subCategoria)
         {
-            //Campos
+            #region Campos
+
             subCategoria.Campos = new List<CamposModel>();
+
             subCategoria.Campos.Add(new CamposModel()
             {
                 Ordem = 1,
-                Descricao = "Campo de Checagem",
-                Tipo = "checkbox",
+                Descricao = "Campo de Seleção",
+                Tipo = "dropdownlist",
                 ListaCampos = new List<ListaCamposModel>()
+                {
+                    new ListaCamposModel()
+                    {
+                        Descricao = "Opção 1"
+                    },
+                    new ListaCamposModel()
+                    {
+                        Descricao = "Opção 2"
+                    }
+                }
             });
 
-            subCategoria.Campos[0].ListaCampos.Add(new ListaCamposModel()
+            subCategoria.Campos.Add(new CamposModel()
             {
-                Descricao = "Option 1"
+                Ordem = 2,
+                Descricao = "Campo de Texto",
+                Tipo = "textbox",
+                ListaCampos = new List<ListaCamposModel>()
+                {
+                    new ListaCamposModel()
+                    {
+                        Descricao = "Campo 1"
+                    }
+                }
             });
 
-            subCategoria.Campos[0].ListaCampos.Add(new ListaCamposModel()
-            {
-                Descricao = "Option 2"
-            });
+            #endregion
 
             try
             {
@@ -68,7 +94,7 @@ namespace Teste.Controllers
                         session.Save(subCategoria);
                         tran.Commit();
                     }
-                }
+                }                
 
                 return RedirectToAction("Index");
             }
@@ -144,6 +170,5 @@ namespace Teste.Controllers
                 return View();
             }
         }
-
     }
 }

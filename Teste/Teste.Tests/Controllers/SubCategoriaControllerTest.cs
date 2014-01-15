@@ -11,7 +11,14 @@ namespace Teste.Tests.Controllers
         [TestMethod]
         public void Index()
         {
+            // Arrange
+            SubCategoriaController controller = new SubCategoriaController();
 
+            // Act
+            ViewResult result = controller.Index() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
         }
     }
 }

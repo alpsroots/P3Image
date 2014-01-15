@@ -23,7 +23,7 @@
         <div class="editor-field">
             <%: Html.EditorFor(model => model.Descricao) %>
             <%: Html.ValidationMessageFor(model => model.Descricao) %>
-        </div>
+        </div>        
         <br />
         <p>
             <input type="submit" value="Salvar" />
